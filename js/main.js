@@ -1,8 +1,12 @@
 $( document ).ready(function() {
     const apikey = '1c8ab2ee6c9278c1787402e27c011570';
     const allowCORS = `https://cors-anywhere.herokuapp.com/`
-    const url = `${allowCORS}https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=100&country=us&f_has_lyrics=1@&apikey=${apikey}`
-   
+    let country ='us'
+    let musixUrl = `${allowCORS}https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=100&country=${country}&f_has_lyrics=1@&apikey=${apikey}`
+    let itunesUrl = `${allowCORS}https://itunes.apple.com/search?term=bad+guy`;
+    
+    console.log(musixUrl);
+    
     // $('.list').click(function(){
     //     $('.list').append('<li>Earl</li>')
     // })
@@ -11,11 +15,13 @@ $( document ).ready(function() {
     
     
     // QUERYING TOP SONGS
-    fetch(url)
+    fetch(musixUrl)
         .then(res => res.json())
         .then(function(chart){
             const topSongs = chart.message.body.track_list;
+            
             for(let x in topSongs){
+                   
                 let rank = Number(x)+1;
                 $('.rank-container').append(`
                 <div class="rank-box">
@@ -37,7 +43,15 @@ $( document ).ready(function() {
             </div>
                
                 `)
-                console.log(topSongs[x].track.track_name);
+                // console.log(topSongs[x].track.track_name);
             }
         })
+
+        // fetch(itunesUrl)
+        // .then(res => res.json())
+        // .then(function(song){
+        //     let thesong = song.results[0].artworkUrl100;
+            
+        //     $('.album-art').attr('src', thesong.toString())
+        // })
 });
