@@ -15,9 +15,10 @@
 body{
     width: 100%;
     /* background: pink; */
-    height: 1000px;
+    height: 100vh;
     font-family: 'Righteous', cursive;
     background: #474F59;
+    display: flex;
 }
 .side-chart{
     background: #1F2226;
@@ -48,12 +49,19 @@ box-shadow: 0 4px 6px -0px #AEB5BF;
 
 .title-bar{
 /* border: 1px solid white; */
-width: 80%;
+width: 90%;
 display: flex;
 justify-content: space-between;
 align-items: center;
 }
 
+.chart-icons{
+/* border: 1px solid white; */
+width: 15%;
+font-size: 2.3vw;
+display: flex;
+justify-content: space-between
+}
 
 .rank-container{
     border: 1px solid black;
@@ -67,10 +75,38 @@ align-items: center;
     flex-direction: column; */
 }
 
+.searchbox{
+background: #1F2226;
+height: 6%;
+color: #F0F0F2;
+font-size: 3vw;
+display: flex;
+justify-content: center;
+align-items: center;
+/* border-bottom: 1px solid ; */
+box-shadow: 0 4px 6px -0px #AEB5BF;
+}
+
+.searchInp{
+    border: none;
+    width: 80%;
+    height: 8%;
+    background: #F0F0F2;
+    border-radius: 20vw;
+    padding: .9vw;
+    color: #474F59;
+    font-size: 1vw;
+    font-family: 'Rubik', sans-serif;
+}
+
+.searchInp:focus{
+    outline: none;
+   
+}
 .rank-box{
 border-bottom: 1px solid #474F59;
 height: 8vw;
-width: 95%;
+width: 100%;
 color: #F0F0F2;
 display: flex;
 flex-direction: column;
@@ -78,6 +114,11 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 margin: auto;
+}
+
+.rank-box:hover{
+    cursor: pointer;
+    background: #474F59;
 }
 
 .rank-info{
@@ -91,8 +132,14 @@ margin: auto;
 }
 
 .rank-num{
+    margin-left: 2vw;
     font-size: 2.5vw;
     width: 5%;
+}
+
+.fa-globe-americas:hover{
+    cursor: pointer;
+    color: #707F8C;
 }
 
 .album-art-box{
@@ -141,6 +188,73 @@ margin: auto;
     font-size: 3vw;
     /* border: 1px solid wheat; */
 }
+
+
+.countries-bar{
+    background: rgb(38, 41, 46);
+    width: 10%;
+    height: 100%;
+
+}
+
+
+.cb{
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    height: 5%;
+    font-family: 'Rubik', sans-serif; 
+    flex-direction: column; 
+}
+
+
+
+.sub-title{
+    font-size: .9vw;
+}
+
+.cb-container{
+    border: 1px solid black;
+    height: 46.8vw;
+    width: 100%;
+    overflow: scroll;
+    overflow-x: hidden; 
+}
+
+.cb-box{
+border-bottom: 1px solid #474F59;
+height: 3vw;
+width: 100%;
+color: #F0F0F2;
+display: flex;
+/* flex-direction: column; */
+/* box-shadow: 0 1px 3px -0px #AEB5BF; */
+/* border: 1px solid white; */
+justify-content: space-evenly;
+align-items: center;
+margin: auto;
+}
+
+.cb-box:hover{
+    cursor: pointer;
+    background: #474F59;
+}
+
+.cb-name{
+    font-size: 1vw
+}
+
+
+
+
+.info-bar{
+    background: #1F2226;
+    width: 40%;
+    height: 100%;
+    margin: auto;
+}
+
+
 
 
 
