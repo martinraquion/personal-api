@@ -15,11 +15,18 @@ $( document ).ready(function() {
 
     $('#song-search').click(function(){
       $('.searchbox').slideToggle(200)
+      $('.searchInp').focus()
     })
 
     $('#globe').click(function(){
       $('.countries-bar').slideToggle(100)
     })
+
+    $('#ctoggle').click(function(){
+      $('.countries-bar').hide()
+    })
+
+
     
     // $('.list').click(function(){
     //     $('.list').append('<li>Earl</li>')
@@ -41,7 +48,7 @@ $( document ).ready(function() {
                 let rank = Number(x)+1;
                 $('.rank-container').append(`
                 <div class="rank-box">
-              <div class="rank-info">
+              <div class="rank-info" id="${topSongs[x].track.track_id}">
                 <span class="rank-num">${rank}</span>
                 <div class="album-art-box">
                   <img src="img/album-art.jpg" class="album-art" height="100px" width="100px">
@@ -59,11 +66,29 @@ $( document ).ready(function() {
             </div>
                
                 `)
-                // console.log(topSongs[x].track.track_name);
             }
+
+            
+            // FOR THE INFO BOX
+            $('.rank-info').on('click', function(){
+              // $('.lyrics-box').html('')
+              let trackID = this.id            
+              fetch(`${allowCORS}https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackID}&apikey=${apikey}`)
+              .then(res => res.json())
+              .then(function(data){
+                let lyrics = data.message.body.lyrics.lyrics_body;
+                $('.lyrics-box').append(lyrics)
+                console.log(lyrics)
+              })
+            
+            })
         })
 
-       
+
+
+
+
+      //  FOR OTHER COUNTRIES
 
         fetch(countriesURL)
           .then(res => res.json())
@@ -89,7 +114,11 @@ $( document ).ready(function() {
               console.log('changed')
               let newcountry = $(this).attr('id')
               console.log(newcountry)
-
+              $('#cur-country').show()
+              let flagUrl = $(this).children().first().children().attr('src')
+              
+              $('#cur-countryIMG').attr('src', flagUrl)
+              $('#globe').hide()
              
               $('.rank-container').html('')
               let newmusixUrl = `${allowCORS}https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=100&country=${newcountry}&f_has_lyrics=1@&apikey=${apikey}`
@@ -98,7 +127,6 @@ $( document ).ready(function() {
               .then(res => res.json())
               .then(function(chart){
                   const topSongs = chart.message.body.track_list;
-                  
                   for(let x in topSongs){
                          
                       let rank = Number(x)+1;
@@ -110,7 +138,7 @@ $( document ).ready(function() {
                         <img src="img/album-art.jpg" class="album-art" height="100px" width="100px">
                       </div>
                       <div class="song-info">
-                          <span class="song-title">${topSongs[x].track.track_name}</span>
+                          <span class="song-title" id='${topSongs[x].track.track_id}'>${topSongs[x].track.track_name}</span>
                           <span class="song-artist">${topSongs[x].track.artist_name}</span>
                           <span class="song-album">${topSongs[x].track.album_name}</span>
                       </div>
@@ -123,14 +151,19 @@ $( document ).ready(function() {
                      
                       `)
                   }
+
+                  
+
+      
               })
 
              })
              
-
-
+             
           })
 
+
+         
 
         
 

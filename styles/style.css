@@ -137,7 +137,7 @@ margin: auto;
     width: 5%;
 }
 
-.fa-globe-americas:hover{
+.ctoggle:hover{
     cursor: pointer;
     color: #707F8C;
 }
@@ -249,14 +249,45 @@ margin: auto;
 
 .info-bar{
     background: #1F2226;
-    width: 40%;
+    width: 43%;
     height: 100%;
+    margin: auto;
+    display: flex;
+}
+
+.track-info-cont{
+    width: 40%;
+    height: 90%;
+    /* border: 1px solid white; */
     margin: auto;
 }
 
+.track-lyrics-cont{
+    width: 50%;
+    height: 90%;
+    /* border: 1px solid white; */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background: rgb(112, 127, 140, 0.3); 
+    border-radius: 10px;
+}
 
+.earl{
+    height: 100%;
+    width: 100% ;
+}
 
-
+.lyrics-box{
+    /* border: 1px solid #F0F0F2; */
+    height: 90%;
+    width: 80%;
+    margin: auto;
+    color: #F0F0F2;
+    font-family:  'Rubik', sans-serif;
+    font-weight: 100;  
+}
 
 /* SCROLL BAR CSS */
   /* Track */
