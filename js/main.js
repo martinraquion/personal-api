@@ -1,6 +1,7 @@
 $( document ).ready(function() {
     const apikey = '1c8ab2ee6c9278c1787402e27c011570';
     const allowCORS = `https://cors-anywhere.herokuapp.com/`
+    const musixBaseURL = `https://api.musixmatch.com/ws/1.1/`
     let musixUrl = `${allowCORS}https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=100&country=us&f_has_lyrics=1@&apikey=${apikey}`
     let itunesUrl = `${allowCORS}https://itunes.apple.com/search?term=bad+guy`;
     countriesURL = `https://restcountries.eu/rest/v2/all`
@@ -22,8 +23,9 @@ $( document ).ready(function() {
       $('.countries-bar').slideToggle(100)
     })
 
-    $('#ctoggle').click(function(){
-      $('.countries-bar').hide()
+ 
+    $('.ctoggle').click(function(){
+      $('.countries-bar').slideToggle(100)
     })
 
 
@@ -47,7 +49,7 @@ $( document ).ready(function() {
                    
                 let rank = Number(x)+1;
                 $('.rank-container').append(`
-                <div class="rank-box">
+                <div class="rank-box" id="${topSongs[x].track.commontrack_id}">
               <div class="rank-info" id="${topSongs[x].track.track_id}">
                 <span class="rank-num">${rank}</span>
                 <div class="album-art-box">
@@ -71,15 +73,35 @@ $( document ).ready(function() {
             
             // FOR THE INFO BOX
             $('.rank-info').on('click', function(){
-              // $('.lyrics-box').html('')
+              $('.lyrics-here').text('')
               let trackID = this.id            
               fetch(`${allowCORS}https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackID}&apikey=${apikey}`)
               .then(res => res.json())
               .then(function(data){
                 let lyrics = data.message.body.lyrics.lyrics_body;
-                $('.lyrics-box').append(lyrics)
+                $('.lyrics-here').append(lyrics)
                 console.log(lyrics)
               })
+
+              let commonTrackID = $(this).parent().attr('id');
+              console.log(commonTrackID)
+              // console.log(commonTrackID)
+              // fetch(`${allowCORS}${musixBaseURL}track.get?commontrack_id=${commonTrackID}&apikey=${apikey}`)
+              // .then(res => res.json())
+              // .then(function(trackData){
+              //   let trackName = trackData.message.body.track.track_name
+              //   let trackArtist = trackData.message.body.track.artist_name
+              //   let trackAlbum = trackData.message.body.track.album_name
+              //   let trackAlbumID = trackData.message.body.track.album_id
+              //   console.log(trackName);
+              //   console.log(trackArtist)
+              //   console.log(trackAlbum)
+
+              //   $('.track-title').text(trackName)
+              //   $('.track-artist').text(trackArtist)
+              //   $('.track-album').text(trackAlbum)
+              //   $('.track-album').attr('id', trackAlbumID)
+              // })
             
             })
         })
@@ -111,6 +133,7 @@ $( document ).ready(function() {
 
 
              $('.cb-box').on('click', function(){
+              
               console.log('changed')
               let newcountry = $(this).attr('id')
               console.log(newcountry)
@@ -127,6 +150,7 @@ $( document ).ready(function() {
               .then(res => res.json())
               .then(function(chart){
                   const topSongs = chart.message.body.track_list;
+                 
                   for(let x in topSongs){
                          
                       let rank = Number(x)+1;
@@ -151,10 +175,6 @@ $( document ).ready(function() {
                      
                       `)
                   }
-
-                  
-
-      
               })
 
              })
