@@ -295,6 +295,9 @@ margin: auto;
     font-family: 'Rubik', sans-serif;
     /* width: 90%; */
     /* border-radius: 20px; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -311,22 +314,31 @@ margin: auto;
 }
 
 .other-songs{
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: auto;
+    /* height: 50%; */
     /* border: 1px solid white */
     margin: auto;   
     background: rgb(112, 127, 140, 0.3); 
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .other-songs .rank-box{
     height: 9%;
 }
 
-.other-songs .song-info{
-    margin: auto;
+.other-song-info{
+    /* margin: auto; */
+    height: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #AEB5BF
 }
 
+.other-song-title{
+    font-size: .45em
+}
 
 
 .track-title{
@@ -340,6 +352,25 @@ margin: auto;
 .track-album{
     font-size: .7em;
 }
+
+.genre-container{
+    /* border: 1px solid white; */
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.genre{
+    font-size: .45em;
+    background: darkolivegreen;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: 7px;
+    margin-top: 5px;
+}
+
+
+
 
 .lyrics-here{
     height: 100%;
