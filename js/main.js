@@ -3,8 +3,10 @@
       const allowCORS = `https://cors-anywhere.herokuapp.com/`
       const musixBaseURL = `https://api.musixmatch.com/ws/1.1/`
       let musixUrl = `${allowCORS}https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=100&country=xy&f_has_lyrics=1@&apikey=${apikey}`
-      let itunesUrl = `${allowCORS}https://itunes.apple.com/search?term=bad+guy`;
+      let itunesUrl = `${allowCORS}https://itunes.apple.com/`;
       countriesURL = `https://restcountries.eu/rest/v2/all`
+
+      
       
       // console.log(musixUrl);
 
@@ -15,22 +17,14 @@
       // $('.other-songs').hide()
       // $('.sub-title').hide()
 
-     
-
       $('#globe').click(function(){
         $('.countries-bar').slideToggle(100) 
         $('#searchcountry').focus() 
       })
-
   
       $('.ctoggle').click(function(){
         $('.countries-bar').slideToggle(100)
       })
-
-     
-
-
-
       
       // $('.list').click(function(){
       //     $('.list').append('<li>Earl</li>')
@@ -63,8 +57,7 @@
                   </div>
 
                   <div class="hover-btn-box">
-                    <span class='hover-text'>view info and lyrics &nbsp; 
-                    <span class='fas fa-caret-right'></span>
+                    <span class='hover-text'> <span class='fas fa-play'></span>
                     </span>
                   </div>
                   
@@ -85,20 +78,8 @@
                 })
                 
 
-                // $('.hover-text').hover(function(){
-                //   $('.hover-text').show()
-                // })
-
-                // <div class="album-art-box">
-                //     <img src="img/album-art.jpg" class="album-art" height="100px" width="100px">
-                //   </div>
-
-              //   <div class="play-btn-box">
-              //   <span class="fas fa-play-circle"></span>
-              // </div>
-              
-
-
+             
+            
 
               //FOR SEARCHING SONGS
               $('#song-search').click(function(){
@@ -143,7 +124,7 @@
 
                 let commonTrackID = $(this).parent().attr('id');
                 console.log(commonTrackID)
-                // console.log(commonTrackID)
+         
                 fetch(`${allowCORS}${musixBaseURL}track.get?commontrack_id=${commonTrackID}&apikey=${apikey}`)
                 .then(res => res.json())
                 .then(function(trackData){
@@ -152,16 +133,32 @@
                   let trackAlbum = trackData.message.body.track.album_name
                   let trackAlbumID = trackData.message.body.track.album_id
                   let genrelist = trackData.message.body.track.primary_genres.music_genre_list 
-                  // console.log(trackName);
-                  // console.log(trackArtist)
-                  // console.log(trackAlbum)
-                  // console.log(genrelist)
+          
 
                   $('.track-title').text(trackName)
                   $('.track-artist').text(trackArtist)
                   $('.track-album').text(trackAlbum)
                   $('.track-album').attr('id', trackAlbumID)
                   $('.albumAll-btn').attr('id', trackAlbumID)
+
+                  let str = trackName.toLowerCase()
+                  var replaced = str.split(' ').join('+');
+               
+                  fetch(`${itunesUrl}search?term=${replaced}`)
+                      .then(res => res.json())
+                      .then(function(data){
+                        let artprev = data.results[0].artworkUrl100;
+                        let songprev = data.results[0].previewUrl
+                        let linkartist = data.results[0].artistViewUrl     
+                        let linktrack = data.results[0].trackViewUrl
+                        let linkalbum  = data.results[0].collectionViewUrl            
+                        $('#al-art').attr('src', artprev)
+                        $('#song-prev').attr('src',songprev)
+                        $('#link-track').attr('href', linktrack)
+                        $('#link-artist').attr('href',linkartist)
+                        $('#link-album').attr('href', linkalbum)
+
+                      })
 
                   for(let x in genrelist){
                   
@@ -175,10 +172,8 @@
 
                 $('.albumAll-btn').off('click').on('click', function(){
                   
-                  $('.other-songs').html('')
-                  // $('.other-songs').show()
+                  $('.other-songs').html('')          
                   let albumIDother = this.id;
-                  // console.log(albumIDother)
                   fetch(`${allowCORS}${musixBaseURL}album.tracks.get?album_id=${albumIDother}&page=1&apikey=${apikey}`)
                   .then(res => res.json())
                   .then(function(album){
@@ -193,8 +188,6 @@
                      
                     }
                   })
-                  // <span class='other-song-title'>LANGIT</span>
-                  // $('.other-song-info').append()
 
                 })
 
@@ -288,10 +281,9 @@
                         <span class="song-album">${topSongs[x].track.album_name}</span>
                     </div>
                     <div class="hover-btn-box">
-                    <span class='hover-text'>view info and lyrics &nbsp; 
-                    <span class='fas fa-caret-right'></span>
+                    <span class='hover-text'> <span class='fas fa-play'></span>
                     </span>
-                  </div>
+                  </div>  
                     
                   </div>
                 </div>
@@ -347,6 +339,31 @@
                   $('.track-album').attr('id', trackAlbumID)
                   $('.albumAll-btn').attr('id', trackAlbumID)
 
+
+                  let str = trackName.toLowerCase()
+                  var replaced = str.split(' ').join('+');
+          
+                 
+                    //  albumidURL = ${topSongs[x].track.track_name}
+                  //  let str;
+      
+      
+                  fetch(`${allowCORS}https://itunes.apple.com/search?term=${replaced}`)
+                      .then(res => res.json())
+                      .then(function(data){
+                        let artprev = data.results[0].artworkUrl100;
+                        let songprev = data.results[0].previewUrl
+                        let linkartist = data.results[0].artistViewUrl     
+                        let linktrack = data.results[0].trackViewUrl
+                        let linkalbum  = data.results[0].collectionViewUrl            
+                        $('#al-art').attr('src', artprev)
+                        $('#song-prev').attr('src',songprev)
+                        $('#link-track').attr('href', linktrack)
+                        $('#link-artist').attr('href',linkartist)
+                        $('#link-album').attr('href', linkalbum)
+
+                      })
+
                   for(let x in genrelist){
                   
                     $('.genre-container').append(`
@@ -357,9 +374,9 @@
 
                 })
 
-                $('.albumAll-btn').off('click').on('click', function(){
+                $('.albumAll-btn').one('click', function(){
                   
-                  $('.other-songs').html('')
+                  $('.other-songs').html(' ')
                   // $('.other-songs').show()
                   let albumIDother = this.id;
                   // console.log(albumIDother)

@@ -32,7 +32,14 @@ body{
     width: 10px;
   }
   
+a{
+    text-decoration: none;
+    color: #F0F0F2;
+}
 
+a:hover{
+    color: darkolivegreen
+}
 
 .title-box{
 background: #1F2226;
@@ -107,6 +114,11 @@ box-shadow: 0 4px 6px -0px #AEB5BF;
     outline: none;
    
 }
+
+#song-search:hover{
+    cursor: pointer;
+    color: darkolivegreen;
+}
 .rank-box{
 border-bottom: 1px solid #474F59;
 height: 8vw;
@@ -180,7 +192,7 @@ margin: auto;
 }
 
 .hover-text{
-    font-size: .8vw;
+    font-size: 1.5vw;
 }
 .song-artist, .song-album{
     font-size: 1vw;
@@ -305,6 +317,23 @@ margin: auto;
     justify-content: center;
 }
 
+.audio-bar{
+    outline: none;
+    margin-bottom: 20px;
+}
+
+#globe{
+    cursor: pointer
+}
+
+#globe:hover{
+    color: darkolivegreen;
+}
+
+
+#al-art{
+    margin-bottom: 10px;
+}
 
 .track-lyrics-cont{
     width: 50%;
@@ -357,6 +386,10 @@ margin: auto;
 .track-album{
     font-size: .7em;
 }
+
+/* .audio-bar{
+    background: #474F59;
+} */
 
 .genre-container{
     /* border: 1px solid white; */

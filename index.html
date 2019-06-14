@@ -13,7 +13,7 @@
   <div class="side-chart">
       <div class="title-box">
         <div class="title-bar">
-          <span class="logo">billboom charts</span> 
+          <span class="logo">billboom top 100</span> 
           <div class="chart-icons">
           <span class="fas fa-search" id='song-search'></span> 
           <span class="fas fa-globe-americas" id="globe"></span>
@@ -22,11 +22,29 @@
         </div>
       </div>
       <div class="searchbox">
-          <input type="text" maxlength="100" class="searchInp" id="searchInp">
+          <input type="text" maxlength="100" class="searchInp" id="searchInp" placeholder='song, artist, album, or rank number'>
         </div>
       <div class="rank-container" id="rank-container"> 
-            
-           
+        
+          <!-- <div class="rank-box" id="${topSongs[x].track.commontrack_id}">
+              <div class="rank-info" id="${topSongs[x].track.track_id}">
+                <span class="rank-num">Earl</span>
+                
+                <div class="song-info">
+                    <span class="song-title">Earl</span>
+                    <span class="song-artist">earl</span>
+                    <span class="song-album">earl</span>
+                </div>
+
+                <div class="hover-btn-box">
+                  <span class='hover-text'> 
+                  <span class='fas fa-play'></span>
+                  </span>
+                </div>
+                
+               
+              </div>
+            </div> -->
             
       </div>
       
@@ -40,7 +58,7 @@
     </div>
     <div class="title-box cb">
       <div class="title-bar cb">
-        <input type="text" maxlength="100" class="searchInp" id="searchcountry" autocomplete="off">
+        <input  type="text" maxlength="100" class="searchInp" id="searchcountry" autocomplete="off">
       </div>
       
     </div>
@@ -48,7 +66,7 @@
         <div class="cb-box" id='xy'>
           <span class="flag-pic">
             <!-- <img src="https://restcountries.eu/data/usa.svg" alt="" width="44vw" height="30vw"> -->
-            <span class="fas fa-globe-americas" id="globe" style="font-size: 1.5vw"></span>
+            <span class="fas fa-globe-americas" style="font-size: 1.5vw"></span>
           </span>
           <div class="cb-name" id="">
             WORLD            
@@ -61,14 +79,18 @@
 
     <div class="track-info-cont">
         <div class="track-info-wrap">
-            <span class="track-title"></span><br>
-            <span class="track-artist"></span><br>
-            <span class="track-album" id=''></span><br><br>
+            <img src='img/Rolling-2.svg' height="120vw" width="120vw" id="al-art"><br>
+            <a href="" id='link-track' target="_blank"><span class="track-title"></span></a><br>
+            <a href="" id='link-artist' target="_blank"><span class="track-artist"></span></a><br>
+            <a href="" id='link-album' target="_blank"><span class="track-album" id=''></span></a><br>
             <div class="genre-container">
-              <!-- <span class="genre">Pop</span>
-              <span class="genre">Electronic</span>
-              <span class="genre">EDM</span> -->
+                <!-- <span class="genre">Pop</span>
+                <span class="genre">Electronic</span>
+                <span class="genre">EDM</span> -->
             </div><br>
+            <!-- <span class="audio-prev">preview</span> -->
+            <audio src="" id="song-prev" controls autoplay class="audio-bar"></audio><br>
+            
             <button class="albumAll-btn">VIEW TRACKS FROM THE ALBUM &nbsp;<span class="fas fa-caret-down"></span></button>
             <div class="other-songs">
                
