@@ -1,4 +1,4 @@
-# personal-api
+# personal-api (billboom top 100)
 Created a 'billboom top 100'(billboard imitation) charts using musixmatch and itunes api
 <br>
 I made a Top 100 chart for different countries that can view track info with song lyrics and song preview
