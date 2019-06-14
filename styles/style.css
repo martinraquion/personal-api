@@ -158,7 +158,8 @@ margin: auto;
 }
 
 .song-info{
-    width: 60%;
+    margin-left: 2vw;
+    width: 70%;
     height: 90%;
     /* border: 1px solid wheat; */
     font-family: 'Rubik', sans-serif;
@@ -177,15 +178,19 @@ margin: auto;
 .song-title{
     font-size: 1.5vw;
 }
+
+.hover-text{
+    font-size: .8vw;
+}
 .song-artist, .song-album{
     font-size: 1vw;
     margin-top: 4px
 }
 
 
-.play-btn-box{
+.hover-btn-box{
     height: 100%;
-    width: 15%;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;

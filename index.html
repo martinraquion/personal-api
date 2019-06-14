@@ -13,18 +13,18 @@
   <div class="side-chart">
       <div class="title-box">
         <div class="title-bar">
-          <span class="logo">billboom</span> 
+          <span class="logo">billboom charts</span> 
           <div class="chart-icons">
           <span class="fas fa-search" id='song-search'></span> 
           <span class="fas fa-globe-americas" id="globe"></span>
-          <span id="cur-country" class="ctoggle"><img src="" width="50vw" height="35vw" id='cur-countryIMG'></span>
+          <span id="cur-country" class="ctoggle hide"><img src="" width="50vw" height="38vw" id='cur-countryIMG'></span>
         </div>
         </div>
       </div>
       <div class="searchbox">
           <input type="text" maxlength="100" class="searchInp" id="searchInp">
         </div>
-      <div class="rank-container">
+      <div class="rank-container" id="rank-container"> 
             
            
             
@@ -40,17 +40,18 @@
     </div>
     <div class="title-box cb">
       <div class="title-bar cb">
-        <input type="text" maxlength="100" class="searchInp" id="#searchcountry">
+        <input type="text" maxlength="100" class="searchInp" id="searchcountry" autocomplete="off">
       </div>
       
     </div>
       <div class="cb-container">
-        <div class="cb-box">
+        <div class="cb-box" id='xy'>
           <span class="flag-pic">
-            <img src="https://restcountries.eu/data/usa.svg" alt="" width="44vw" height="30vw">
+            <!-- <img src="https://restcountries.eu/data/usa.svg" alt="" width="44vw" height="30vw"> -->
+            <span class="fas fa-globe-americas" id="globe" style="font-size: 1.5vw"></span>
           </span>
           <div class="cb-name" id="">
-            USA            
+            WORLD            
           </div>
         </div>    
   </div>
@@ -68,7 +69,7 @@
               <span class="genre">Electronic</span>
               <span class="genre">EDM</span> -->
             </div><br>
-            <button class="albumAll-btn">VIEW TRACKS FROM THE ALBUM <span class="fas fa-caret-down"></span></button>
+            <button class="albumAll-btn">VIEW TRACKS FROM THE ALBUM &nbsp;<span class="fas fa-caret-down"></span></button>
             <div class="other-songs">
                
             </div>
